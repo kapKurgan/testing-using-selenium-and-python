@@ -35,3 +35,5 @@ class ProductPageLocators(object):
     PRODUCT_IN_BASKET_NAME = (By.CSS_SELECTOR, "#messages > div:nth-child(1) > div")
     # В корзине - Стоимость товара
     PRODUCT_IN_BASKET_PRICE = (By.CSS_SELECTOR, "#messages > div.alert.alert-safe.alert-noicon.alert-info.fade.in > div > p:nth-child(1)")
+    #
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "div.alert-success")

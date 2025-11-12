@@ -1,4 +1,9 @@
 from selenium.common.exceptions import NoSuchElementException  # используется методом is_element_present
+from selenium.common.exceptions import TimeoutException  # используется методом is_element_present
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class BasePage():
     def __init__(self, browser, url, timeout=10):
@@ -21,5 +26,23 @@ class BasePage():
         try:
             self.browser.find_element(how, what)
         except (NoSuchElementException):
+            return False
+        return True
+
+    def is_not_element_present(self, how, what, timeout=4):
+        # метод, который проверяет, что элемент не появляется на странице в течение заданного времени
+        # упадет, как только увидит искомый элемент. Не появился: успех, тест зеленый
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except (TimeoutException):
+            return True
+        return False
+
+    def is_disappeared(self, how, what, timeout=4):
+        # Если хотим проверить, что какой-то элемент исчезает, то следует воспользоваться явным ожиданием вместе с функцией until_not
+        # будет ждать до тех пор, пока элемент не исчезнет
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException).until_not(EC.presence_of_element_located((how, what)))
+        except (TimeoutException):
             return False
         return True

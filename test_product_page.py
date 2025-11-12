@@ -18,3 +18,26 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.should_product_in_basket()         # проверить есть ли в корзине - общая стоимость, наименование товара
     page.product_in_basket()                # в корзине - общая стоимость, наименование товара
     page.product_comparison()               # сравнить наименование и стоимость товара в карточке и корзине
+
+def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+    page = ProductPage(browser, link)       # инициализировать Page Object, передать в конструктор экземпляр драйвера и url адрес
+    page.open()                             # открыть страницу
+    page.product_add_to_basket()            # в карточке товара - цена, наименование товара
+    page.press_add_to_basket_button()       # нажать кнопку "Добавить в корзину"
+    page.should_be_message_about_success()
+
+def test_guest_cant_see_success_message(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+    page = ProductPage(browser, link)       # инициализировать Page Object, передать в конструктор экземпляр драйвера и url адрес
+    page.open()                             # открыть страницу
+    page.product_add_to_basket()            # в карточке товара - цена, наименование товара
+    page.should_be_message_about_success()
+
+def test_message_disappeared_after_adding_product_to_basket(browser):
+    link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+    page = ProductPage(browser, link)       # инициализировать Page Object, передать в конструктор экземпляр драйвера и url адрес
+    page.open()                             # открыть страницу
+    page.product_add_to_basket()            # в карточке товара - цена, наименование товара
+    page.press_add_to_basket_button()       # нажать кнопку "Добавить в корзину"
+    page.should_be_message_of_is_disappeared()
