@@ -1,4 +1,4 @@
-from selenium.common.exceptions import NoSuchElementException   # используется исключение для solve_quiz_and_get_code
+from selenium.common.exceptions import NoAlertPresentException   # используется исключение для solve_quiz_and_get_code
 from .locators import ProductPageLocators                       # из файла locators.py импортируйте класс с локаторами ProductPageLocators
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
@@ -24,7 +24,7 @@ class ProductPage(BasePage):
 
     def product_add_to_basket(self):
         self.product_price = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_PRICE).text
-        self.product_name = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_NAME).text
+        self.product_name = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_NAME).text + " has been added to your basket"
 
     def product_in_basket(self):
         self.basket_price = self.browser.find_element(*ProductPageLocators.PRODUCT_IN_BASKET_PRICE).text
@@ -42,20 +42,6 @@ class ProductPage(BasePage):
         # Нажать кнопку Add to basket
         add_to_basket_button = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET_BUTTON)
         add_to_basket_button.click()
-
-    def view_alert_math(self):
-        # в алерте считать х, найти результат функции и получить ответ - реализация моя
-        alert_math = self.browser.switch_to.alert
-        alert_text = alert_math.text
-        x = int(alert_text.split()[2])
-        y = calc(x)
-        print("**************** x =", x, " *** y =", y)
-        alert_math.send_keys(str(y))
-        alert_math.accept()
-        alert_result = self.browser.switch_to.alert
-        alert_result_text = alert_result.text.split(': ')[-1]
-        print("**************** alert_result_text =", alert_result_text)
-        alert_result.accept()
 
     def solve_quiz_and_get_code(self):
         # в алерте считать х, найти результат функции и получить ответ - реализация stepik
