@@ -23,3 +23,7 @@ class LoginPageLocators():
     REGISTER_INPUT_PASSWORD_CONFIRM = (By.CSS_SELECTOR, "#id_registration-password2")
     # Зарегистрироваться - Зарегистрироваться
     REGISTER_BUTTON_REGISTER = (By.CSS_SELECTOR, "button[name=registration_submit]")
+
+class ProductPageLocators(object):
+    # Кнопка - Добавить в корзину
+    BUTTON_ADD_TO_BASKET = (By.CSS_SELECTOR, "button.btn-add-to-basket")
