@@ -4,7 +4,7 @@ from selenium.webdriver.common.by import By
 class MainPageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
-# селекторы к формам регистрации и логина
+# селекторы к формам регистрации и логина http://selenium1py.pythonanywhere.com/ru/accounts/login/
 class LoginPageLocators():
     # Войти - Адрес электронной почты
     LOGIN_INPUT_EMAIL = (By.CSS_SELECTOR, "#id_login-username")
@@ -37,3 +37,9 @@ class ProductPageLocators(object):
     PRODUCT_IN_BASKET_PRICE = (By.CSS_SELECTOR, "#messages > div.alert.alert-safe.alert-noicon.alert-info.fade.in > div > p:nth-child(1)")
     #
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, "div.alert-success")
+
+class BasePageLocators():
+    # Кнопка - Войти или зарегистрироваться http://selenium1py.pythonanywhere.com/ru/
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    # Кнопка - Войти или зарегистрироваться с несуществующим селектором
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
