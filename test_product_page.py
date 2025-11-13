@@ -2,6 +2,7 @@
 
 from selenium.webdriver.common.by import By
 from .pages.product_page import ProductPage
+from .pages.basket_page import BasketPage
 import time
 import pytest
 
@@ -49,8 +50,22 @@ def test_guest_should_see_login_link_on_product_page(browser):
     page.should_be_login_link()
 
 # тесты вида "гость может перейти на страницу логина со страницы Х"
-def test_guest_can_go_to_login_page_from_product_page (browser):
+def test_guest_can_go_to_login_page_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
     page.open()
     page.go_to_login_page()
+
+# Гость открывает страницу товара
+# Переходит в корзину по кнопке в шапке
+# Ожидаем, что в корзине нет товаров
+# Ожидаем, что есть текст о том что корзина пуста
+def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
+    link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+    page = ProductPage(browser, link)
+    page.open()  # Гость открывает главную страницу
+    page.go_to_basket_page()  # Переходит в корзину по кнопке в шапке сайта
+    basket_page = BasketPage(browser, browser.current_url)  # Объект страницы корзины
+    basket_page.should_not_be_product_in_basket()  # Ожидаем, что в корзине нет товаров
+    basket_page.should_be_message_about_empty_basket()  # Ожидаем, что есть текст о том что корзина пуста
+

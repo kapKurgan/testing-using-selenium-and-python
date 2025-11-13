@@ -43,3 +43,13 @@ class BasePageLocators():
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
     # Кнопка - Войти или зарегистрироваться с несуществующим селектором
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
+    # Кнопка для перехода в корзину
+    BASKET_BUTTON = (By.CSS_SELECTOR, ".basket-mini a")        # "#default > header > div.page_inner > div > div.basket-mini.pull-right.hidden-xs > span > a"
+
+
+class BasketPageLocators():
+    # Если корзина не пуста, то по этому локатору будет находиться название товара в корзине, иначе этого селектора не будет
+    BASKET_PRODUCT_NAME = (By.CSS_SELECTOR, ".basket-items h3")
+    # Плохой локатор, но другого нет. Если корзина не пуста,
+    # то по этому локатору будут находится другие тексты, относящиеся к товару в корзине
+    BASKET_EMPTY_TEXT = (By.CSS_SELECTOR, "#content_inner p")  # "#content_inner > p"
