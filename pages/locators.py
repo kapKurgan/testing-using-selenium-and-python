@@ -45,7 +45,8 @@ class BasePageLocators():
     LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "#login_link_inc")
     # Кнопка для перехода в корзину
     BASKET_BUTTON = (By.CSS_SELECTOR, ".basket-mini a")        # "#default > header > div.page_inner > div > div.basket-mini.pull-right.hidden-xs > span > a"
-
+    #
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 class BasketPageLocators():
     # Если корзина не пуста, то по этому локатору будет находиться название товара в корзине, иначе этого селектора не будет

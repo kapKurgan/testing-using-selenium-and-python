@@ -1,11 +1,44 @@
 # pytest -v -s --tb=line --language=en test_product_page.py
 # pytest -v -s --tb=line --language=en -m login test_product_page.py
+# pytest -v --tb=line --language=en -m need_review test_product_page.py
 
 from selenium.webdriver.common.by import By
 from .pages.product_page import ProductPage
 from .pages.basket_page import BasketPage
+from .pages.login_page import LoginPage
 import time
 import pytest
+
+class TestUserAddToCartFromProductPage(object):
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        self.browser = browser
+        link = "http://selenium1py.pythonanywhere.com/en-gb/accounts/login/"
+        email = str(time.time()) + "@fakemail.org"
+        password = "tester123456789"
+        page = LoginPage(self.browser, link)
+        page.open()
+        page.register_new_user(email, password)
+        page.should_be_authorized_user()
+
+    @pytest.mark.need_review
+    def test_user_can_add_product_to_basket(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
+        page = ProductPage(self.browser, link)  # инициализировать Page Object, передать в конструктор экземпляр драйвера и url адрес
+        page.open()                             # открыть страницу
+        page.should_be_add_to_basket()          # проверить есть ли в карточке товара - Кнопка, цена, наименование товара
+        page.product_add_to_basket()            # в карточке товара - цена, наименование товара
+        page.press_add_to_basket_button()       # нажать кнопку "Добавить в корзину"
+        page.should_product_in_basket()         # проверить есть ли в корзине - общая стоимость, наименование товара
+        page.product_in_basket()                # в корзине - общая стоимость, наименование товара
+        page.product_comparison()               # сравнить наименование и стоимость товара в карточке и корзине
+
+    def test_user_cant_see_success_message(self, browser):
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+        page = ProductPage(self.browser, link)  # инициализировать Page Object, передать в конструктор экземпляр драйвера и url адрес
+        page.open()                             # открыть страницу
+        page.product_add_to_basket()            # в карточке товара - цена, наименование товара
+        page.should_be_message_about_success()
 
 @pytest.mark.login
 class TestLoginFromProductPage():
@@ -26,6 +59,7 @@ class TestLoginFromProductPage():
         # self.product.delete()
 
     # тесты вида "гость может перейти на страницу логина со страницы Х"
+    @pytest.mark.need_review
     def test_guest_can_go_to_login_page_from_product_page(self, browser):
         print("\n***** test_guest_can_go_to_login_page_from_product_page")
         link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
@@ -41,6 +75,8 @@ class TestLoginFromProductPage():
         page.open()
         page.should_be_login_link()
 
+
+@pytest.mark.need_review
 @pytest.mark.parametrize('link', [0, 1, 2, 3, 4, 5, 6, pytest.param(7, marks=pytest.mark.xfail), 8, 9])
 def test_guest_can_add_product_to_basket(browser, link):
     link = f"http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{link}"
@@ -81,6 +117,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
 # Переходит в корзину по кнопке в шапке
 # Ожидаем, что в корзине нет товаров
 # Ожидаем, что есть текст о том что корзина пуста
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
     page = ProductPage(browser, link)
@@ -89,4 +126,5 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     basket_page = BasketPage(browser, browser.current_url)  # Объект страницы корзины
     basket_page.should_not_be_product_in_basket()  # Ожидаем, что в корзине нет товаров
     basket_page.should_be_message_about_empty_basket()  # Ожидаем, что есть текст о том что корзина пуста
+
 
