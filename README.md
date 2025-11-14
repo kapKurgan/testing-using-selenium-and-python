@@ -33,4 +33,4 @@ pytest -v -s --tb=line --language=en --alluredir=allure-results test_allure.py
 allure serve allure-results
 ```
 
-![alt tag](https://github.com/kapKurgan/Selenium_Python_Final/github_pict/allure_1.png)
+![alt tag](https://github.com/kapKurgan/Selenium_Python_Final/blob/main/github_pict/allure_1.png)
