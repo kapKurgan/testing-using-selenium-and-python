@@ -1,8 +1,6 @@
-# Selenium_Python_Final
+# Автоматизация тестирования с помощью Selenium и Python
 
-Selenium & Python
-
-Это итоговый проект по курсу Stepik Selenium.
+Итоговый проект.
 
 ## Как запускать тесты
 
