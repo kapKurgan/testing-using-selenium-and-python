@@ -34,3 +34,14 @@ allure serve allure-results
 ```
 
 ![alt tag](https://github.com/kapKurgan/Selenium_Python_Final/blob/main/github_pict/allure_1.png)
+
+![alt tag](https://github.com/kapKurgan/Selenium_Python_Final/blob/main/github_pict/allure_2.png)
+
+![alt tag](https://github.com/kapKurgan/Selenium_Python_Final/blob/main/github_pict/allure_3.png)
+
+![alt tag](https://github.com/kapKurgan/Selenium_Python_Final/blob/main/github_pict/allure_4.png)
+
+![alt tag](https://github.com/kapKurgan/Selenium_Python_Final/blob/main/github_pict/allure_5.png)
+
+![alt tag](https://github.com/kapKurgan/Selenium_Python_Final/blob/main/github_pict/allure_6.png)
+
