@@ -1,0 +1,35 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Sun Dec 28 13:16:12 UTC 2025","Sun Dec 28 13:16:12 UTC 2025","1","","test_allure","","","","Тест #TC-9752","
+    Автоматически сгенерированный тест.
+    Приоритет: LOW
+    ID тест-кейса: TC-9752-6
+    "
+"broken","Sun Dec 28 13:16:07 UTC 2025","Sun Dec 28 13:16:07 UTC 2025","0","","test_allure","TestAllurePageOne","","","***** - @allure.title - Название отчета 1/1","@allure.description - Добавляет описание (Description) к тесту"
+"broken","Sun Dec 28 13:16:11 UTC 2025","Sun Dec 28 13:16:11 UTC 2025","0","","test_allure","TestAllurePageOne","","","***** - @allure.title - Название отчета 1/2",""
+"passed","Sun Dec 28 13:16:12 UTC 2025","Sun Dec 28 13:16:12 UTC 2025","0","","test_allure","","","","Тест #TC-5036","
+    Автоматически сгенерированный тест.
+    Приоритет: HIGH
+    ID тест-кейса: TC-5036-1
+    "
+"passed","Sun Dec 28 13:16:12 UTC 2025","Sun Dec 28 13:16:12 UTC 2025","0","","test_allure","","","","Тест #TC-1191","
+    Автоматически сгенерированный тест.
+    Приоритет: MEDIUM
+    ID тест-кейса: TC-1191-4
+    "
+"broken","Sun Dec 28 13:16:11 UTC 2025","Sun Dec 28 13:16:11 UTC 2025","0","===== - @allure.parent_suite - вкладка Suites/Люксы (Группа тестов (suite)) -> Самый верх","===== - @allure.suite - вкладка Suites/Люксы","===== - @allure.sub_suite - вкладка Suites/Люксы","","","test_allure_two_one",""
+"passed","Sun Dec 28 13:16:12 UTC 2025","Sun Dec 28 13:16:12 UTC 2025","0","","test_allure","","","","Тест #TC-1248","
+    Автоматически сгенерированный тест.
+    Приоритет: HIGH
+    ID тест-кейса: TC-1248-3
+    "
+"broken","Sun Dec 28 13:16:12 UTC 2025","Sun Dec 28 13:16:12 UTC 2025","0","===== - @allure.parent_suite - вкладка Suites/Люксы (Группа тестов (suite)) -> Самый верх","===== - @allure.suite - вкладка Suites/Люксы","===== - @allure.sub_suite - вкладка Suites/Люксы","","","test_allure_two_two",""
+"passed","Sun Dec 28 13:16:12 UTC 2025","Sun Dec 28 13:16:12 UTC 2025","1","","test_allure","","","","Тест #TC-2159","
+    Автоматически сгенерированный тест.
+    Приоритет: LOW
+    ID тест-кейса: TC-2159-2
+    "
+"passed","Sun Dec 28 13:16:12 UTC 2025","Sun Dec 28 13:16:12 UTC 2025","0","","test_allure","","","","Тест #TC-8483","
+    Автоматически сгенерированный тест.
+    Приоритет: HIGH
+    ID тест-кейса: TC-8483-5
+    "
