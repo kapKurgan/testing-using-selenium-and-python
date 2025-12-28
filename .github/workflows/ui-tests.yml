@@ -1,4 +1,4 @@
-name: API Tests
+name: UI Tests
 
 on:
   workflow_dispatch:
@@ -51,7 +51,7 @@ jobs:
 
       - name: Запуск тестов
         run: |
-          pytest -v --language=en --browser=firefox ${{ github.event.inputs.SCENARIO }}.py
+          pytest -v -s --tb=line --language=en --alluredir=reports/${{ github.run_id }}/allure-results --browser=firefox ${{ github.event.inputs.SCENARIO }}.py
 
       - name: Установка Allure CLI
         if: always()
