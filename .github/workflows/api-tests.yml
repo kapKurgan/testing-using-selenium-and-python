@@ -38,6 +38,21 @@ jobs:
           mkdir -p reports/${{ github.run_id }}/allure-results
           mkdir -p reports/${{ github.run_id }}/allure-report
 
+      - name: Установка Firefox
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y firefox
+
+      - name: Установка geckodriver
+        run: |
+          wget https://github.com/mozilla/geckodriver/releases/download/v0.34.0/geckodriver-v0.34.0-linux64.tar.gz
+          sudo tar -xzf geckodriver-*.tar.gz -C /usr/local/bin/
+          sudo chmod +x /usr/local/bin/geckodriver
+
+#      - name: Запуск тестов
+#        run: |
+#          pytest -v --language=en --browser=firefox ${{ github.event.inputs.SCENARIO }}.py
+
       - name: Запуск тестов
         run: |
           pytest -v -s --tb=line --language=en --alluredir=reports/${{ github.run_id }}/allure-results --browser=firefox ${{ github.event.inputs.SCENARIO }}.py
