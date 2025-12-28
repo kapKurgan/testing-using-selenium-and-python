@@ -10,3 +10,4 @@ __pycache__
 .MyStep.txt
 allure-report
 allure-results
+*.py_

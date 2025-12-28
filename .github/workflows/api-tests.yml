@@ -40,7 +40,7 @@ jobs:
 
       - name: Запуск тестов
         run: |
-          pytest -v -s --tb=line --language=en --alluredir=reports/${{ github.run_id }}/allure-results ${{ github.event.inputs.SCENARIO }}.py
+          pytest -v -s --tb=line --language=en --alluredir=reports/${{ github.run_id }}/allure-results --browser=firefox ${{ github.event.inputs.SCENARIO }}.py
 
       - name: Установка Allure CLI
         if: always()
