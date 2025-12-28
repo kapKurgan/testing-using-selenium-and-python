@@ -16,7 +16,16 @@ def browser(request):
     language = request.config.getoption("language")
     headless = request.config.getoption("headless") or os.getenv('CI')  # Авто-включение в CI
 
-    if browser_name == "chrome":
+    is_ci = os.getenv('CI') == 'true'
+
+    if browser_name == "firefox":
+        options = webdriver.FirefoxOptions()
+        options.set_preference("intl.accept_languages", language)
+        if is_ci:
+            options.add_argument("--headless")
+        driver = webdriver.Firefox(options=options)
+
+    elif browser_name == "chrome":
         options = webdriver.ChromeOptions()
         options.add_experimental_option('prefs', {'intl.accept_languages': language})
         if headless:
@@ -25,14 +34,6 @@ def browser(request):
             options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--disable-gpu")
         driver = webdriver.Chrome(options=options)
-
-    elif browser_name == "firefox":
-        options = webdriver.FirefoxOptions()
-        options.set_preference("intl.accept_languages", language)
-        if headless:
-            options.add_argument("--headless")
-            options.add_argument("--no-sandbox")  # Для CI
-        driver = webdriver.Firefox(options=options)
 
     elif browser_name == "edge":
         options = webdriver.EdgeOptions()
