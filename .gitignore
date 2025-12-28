@@ -1,4 +1,11 @@
+# pycharm
+.idea
 .pytest_cache
+__init__.py
+
+# python
+venv
+.venv
 __pycache__
 .MyStep.txt
 allure-report
